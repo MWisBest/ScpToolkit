@@ -55,7 +55,7 @@ namespace ScpControl.Usb.Gamepads
 
         public static UsbDevice DeviceFactory(string devicePath)
         {
-            short vid, pid;
+            ushort vid, pid;
 
             GetHardwareId(devicePath, out vid, out pid);
 
@@ -120,7 +120,7 @@ namespace ScpControl.Usb.Gamepads
 
         public override bool Open(string devicePath)
         {
-            short vid, pid;
+            ushort vid, pid;
 
             GetHardwareId(devicePath, out vid, out pid);
 

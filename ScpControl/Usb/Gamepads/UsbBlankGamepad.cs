@@ -29,8 +29,8 @@ namespace ScpControl.Usb.Gamepads
 
         public UsbBlankGamepad(HidDevice device, string header, string dumpFileName)
         {
-            VendorId = (short) device.VendorID;
-            ProductId = (short) device.ProductID;
+            VendorId = (ushort) device.VendorID;
+            ProductId = (ushort) device.ProductID;
 
             _dumper = new DumpHelper(header, dumpFileName);
         }

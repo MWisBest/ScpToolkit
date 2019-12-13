@@ -33,13 +33,13 @@ namespace ScpControl
 
         public string Path { get; protected set; }
 
-        public short VendorId { get; protected set; }
+        public ushort VendorId { get; protected set; }
 
-        public short ProductId { get; protected set; }
+        public ushort ProductId { get; protected set; }
 
         protected void GetHardwareId(string devicePath)
         {
-            short vid, pid;
+            ushort vid, pid;
 
             GetHardwareId(devicePath, out vid, out pid);
 
@@ -48,7 +48,7 @@ namespace ScpControl
             ProductId = pid;
         }
 
-        public static void GetHardwareId(string devicePath, out short vendorId, out short productId)
+        public static void GetHardwareId(string devicePath, out ushort vendorId, out ushort productId)
         {
             // regex to extract vendor ID and product ID from hardware ID string
             var regex = new Regex("VID_([0-9A-Z]{4})&PID_([0-9A-Z]{4})", RegexOptions.IgnoreCase);
@@ -63,8 +63,8 @@ namespace ScpControl
             }
 
             // get values
-            vendorId = short.Parse(matches[1].Value, NumberStyles.HexNumber);
-            productId = short.Parse(matches[2].Value, NumberStyles.HexNumber);
+            vendorId = ushort.Parse(matches[1].Value, NumberStyles.HexNumber);
+            productId = ushort.Parse(matches[2].Value, NumberStyles.HexNumber);
         }
 
         public virtual bool Open(int instance = 0)
